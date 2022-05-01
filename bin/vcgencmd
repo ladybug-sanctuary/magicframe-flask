@@ -1,0 +1,42 @@
+#!/usr/bin/env python3
+"""Simulate vcgencmd for debugging purposes.
+
+From the VCGENCMD(1) man page:
+
+NAME
+       vcgencmd - query the VideoCore for information
+
+SYNOPSIS
+       vcgencmd [-t] command [params]
+
+       vcgencmd -h
+       vcgencmd --help
+
+DESCRIPTION
+       vcgencmd is a command line utility that can get various pieces of information from the VideoCore GPU on the Raspberry Pi.
+"""
+
+import sys
+
+
+def vcgencmd(command, *params):
+    if command != "display_power":
+        raise Exception("Unsupported command")
+    if len(params) > 1:
+        raise Exception("Too many arguments")
+    if len(params) == 0:  # query
+        params = ["0"]
+
+    try:
+        desired_state = int(params[0])
+    except ValueError:
+        raise Exception("Invalid argument")
+
+    if desired_state == -1:
+        print(f"display_power=0")  # pretend it is off
+    elif desired_state == 0 or desired_state == 1:
+        print(f"display_power={desired_state}")
+
+
+if __name__ == "__main__":
+    vcgencmd(*sys.argv[1:])
