@@ -1,0 +1,11 @@
+[Unit]
+Description=Flask front-end app for magicframe
+After=network.target
+
+[Service]
+WorkingDirectory=/home/pi/magicframe-flask/
+ExecStart=/usr/bin/python3 app.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
