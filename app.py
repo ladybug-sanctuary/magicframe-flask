@@ -9,7 +9,7 @@ import vcgencmd
 HOST="0.0.0.0"
 PORT=8081
 
-app = Flask(__name__, template_folder="templates")
+app = Flask(__name__, template_folder="templates", static_folder="static")
 
 
 def on_or_off(newstatus: int) -> str:

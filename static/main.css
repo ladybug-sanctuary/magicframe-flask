@@ -1,0 +1,12 @@
+.toggle {
+    font-size: 20px;
+    padding: 30px;
+}
+.toggle-on {
+    background-color: green;
+    color: black;
+}
+.toggle-off {
+    background-color: red;
+    color: white;
+}

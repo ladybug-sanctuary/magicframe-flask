@@ -1,7 +1,11 @@
+<head>
+  <link rel="stylesheet" href={{ url_for("static", filename="main.css") }}/>
+</head>
+
 <h1>MagicFrame</h1>
 
 <h3>Change state of the display</h3>
 
 <form method="post" action="/">
-  <input type="submit" value="Turn Display {{ on_or_off | capitalize }}" name="toggle"/>
+  <input class="toggle toggle-{{ on_or_off | lower }}" type="submit" value="Turn Display {{ on_or_off | capitalize }}" name="toggle"/>
 </form>
