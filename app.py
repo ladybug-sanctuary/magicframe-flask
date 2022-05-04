@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Flask front-end app for magicframe"""
 
-from flask import Flask, render_template, request
+from flask import Flask, redirect, render_template, request, url_for
 
 import vcgencmd
 
@@ -28,8 +28,7 @@ def toggle():
             action = oldmsg.split()[-1]
             newstatus = 1 if action.lower() == "on" else 0  # "on" vs "off"
             vcgencmd.set_status(newstatus)
-            newstatus = int(newstatus) ^ 1  # flip after executing command
-            return render_template("index.html", on_or_off=on_or_off(newstatus))
+            return redirect(url_for("toggle"))
 
     return render_template("index.html")
 
