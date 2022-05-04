@@ -16,6 +16,7 @@ DESCRIPTION
        vcgencmd is a command line utility that can get various pieces of information from the VideoCore GPU on the Raspberry Pi.
 """
 
+import random
 import sys
 
 
@@ -33,7 +34,8 @@ def vcgencmd(command, *params):
         raise Exception("Invalid argument")
 
     if desired_state == -1:
-        print(f"display_power=0")  # pretend it is off
+        current_state = random.randint(0, 1)
+        print(f"display_power={current_state}")
     elif desired_state == 0 or desired_state == 1:
         print(f"display_power={desired_state}")
 
