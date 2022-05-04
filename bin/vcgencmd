@@ -25,7 +25,7 @@ def vcgencmd(command, *params):
     if len(params) > 1:
         raise Exception("Too many arguments")
     if len(params) == 0:  # query
-        params = ["0"]
+        params = ["-1"]
 
     try:
         desired_state = int(params[0])
